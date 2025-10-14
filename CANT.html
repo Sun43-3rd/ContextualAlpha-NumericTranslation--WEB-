@@ -1,0 +1,46 @@
+<!DOCTYPE html> 
+<html>
+	<html lang="en-us">	
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<title>
+			CANT | Contextual Alpha-Numeric Translation
+		</title>
+		<link rel="stylesheet" href="CANT.css">
+	</head>
+	<body>
+		<div class="calc-section-top">
+			<table id="parameters">
+				<tbody>
+					<tr>
+						<td><span class="text-heading-2">Law</span></td>
+						<td class="text-heading-2">
+							<select id="calc_law">
+								<option>Reduced</option>
+								<option>Ordinal</option>
+								<option>K&V</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><span class="text-heading-2">Subject</span></td>
+						<td id="calc_subject" class="input text-subtitle" contenteditable="true">A</td>
+					</tr>
+				</tbody>
+			</table>
+			<table id="results">
+				<tr>
+					<td>
+						<select id="results_format">
+								<option>JSON</option>
+								<option>CSV</option>
+						</select>
+					</td>
+					<td class="text-subtitle"></td>
+				</tr>
+			</table>
+		</div>
+		<script type="module" src="Test.js"></script>
+	</body>
+</html>

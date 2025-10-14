@@ -1,0 +1,107 @@
+html{
+	height: 100%;
+}
+
+body{
+	background-color: #000000;
+	padding-top: 2.5%;
+	padding-bottom: 2.5%;
+	margin: 0px 0px 0px 10px;
+	height: 100%;
+	min-height: 500px;
+}
+
+.text-heading-1, .text-heading-2, .text-subtitle, .text-sub-subtitle, .subtitle-box{
+	font-family: 'Courier New', Courier, monospace;
+	color: #ffffff;
+}
+
+.text-heading-1{
+	font-size: 24pt;
+}
+
+.text-heading-2{
+	font-size: 18pt;
+}
+
+.text-subtitle{
+	font-size: 14pt;
+}
+
+.text-sub-subtitle{
+	font-size: 12pt;
+}
+
+.calc-section-top{
+	display: flex;
+	flex-direction: column;
+	row-gap: 10px;
+	width: 80%;
+	height: 100%;
+}
+
+#result_direct{
+	display: flex;
+	column-gap: 5px;
+	width: 500px;
+	height: 100px;
+}
+
+#result_direct tr :nth-child(1){
+	width: 225px;
+}
+#result_direct tr :nth-child(2){
+	width: 150px;
+}
+
+#parameters{
+	display: flex;
+	height: 80px;
+	width: 300px;
+}
+
+#parameters tr :nth-child(1){
+	width: 110px;
+}
+td{
+	
+	border: 2px solid rgb(255, 255, 255);
+	min-width: 100px;
+	min-height: 25px;
+	height: 100%;
+}
+
+#result_direct tr :nth-child(1), #parameters tr :nth-child(1){
+	padding-left: 2px;
+}
+
+.input{
+	position: relative;
+	min-width: 150px;
+	max-width: 235px;
+	border-radius: 1px;
+	height: 30px;
+	width: 25px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+}
+
+#results{
+	padding-top: 25px;
+}
+
+#results tr{
+	display: flex;
+	width: 700px;
+
+}
+
+#results td{
+	display: block;
+	width: max-content;
+}
+
+
