@@ -3,17 +3,6 @@ function Reduced(x){
     return Math.floor(x).toString().split('').map((x) => Number(x)).reduce((a, b) => a + b)
 }
 
-function AddToRow(data, row){
-    data.map((x) => 
-        {const td = document.createElement('td'); td.className = 't-data';
-                    td.textContent = x; row.appendChild(td)})
-}
-
-function AddToRows(data, row){
-    data.map((x, i) => 
-        {const td = document.createElement('td'); td.className = 't-data';
-                    td.textContent = x; row[i].appendChild(td)})
-}
 
 function Astro(subject){
     const bounds = [];
@@ -44,7 +33,7 @@ const subject = document.getElementById('calc_subject')
 const law = document.getElementById("calc_law")
 const filetype = document.getElementById('calc_filetype')
 const download = document.getElementById('calc_download')
-
+const calc_results = document.getElementById('calc_results')
 const regex_operators = /[\/\(\)\^+\*\-]/g;
 const regex_other = /(?<![.!?;]) /g
 const regex_puncutuation = /([.!?;])(?=.*[.!?;])/g;
@@ -137,9 +126,9 @@ const ShowFile =
                         }
                     }`
     
-                const screen = document.getElementById("results").children[0].children[0];
                 
-                screen.children[1].innerText = json
+                
+                calc_results.innerText = json
                 
             },
     
@@ -168,9 +157,9 @@ const ShowFile =
                         }
                     }`
     
-                const screen = document.getElementById("results").children[0].children[0];
                 
-                screen.children[1].innerText = text
+                
+                calc_results.innerText = text
                 
             }
 
@@ -179,9 +168,9 @@ const ShowFile =
                 ${name},${law},Equation,Equation_Translated,Translation,Astrology,Aries,Taurus,Gemini,Cancer,Leo,Virgo,Libra,Scorpio,Sagittarius,Capricorn,Aquarius,Pisces\n-${name},-${law},${data[2]},${data[0]},${data[1]},,No_Reduction,${data[3][0].join(',')}\n-${name},-${law},,,,,Reduced_1,${data[3][2].join(',')}\n-${name},-${law},,,,,Reduced_2,${data[3][3].join(',')}\n-${name},-${law},,,,,Reduced_3,${data[3][4].join(',')}
                 `
     
-                const screen = document.getElementById("results").children[0].children[0];
+            
                 
-                screen.children[1].innerText = text
+                calc_results.innerText = text
             }
                 
         }
@@ -195,7 +184,7 @@ function SetUp(){
     download.addEventListener('click', (event) => {
         const sub = subject.innerText.toString().replace(/\s*([+\-*/])\s*/g, '_').replaceAll(regex_other, '_').replaceAll(regex_puncutuation, '_').replaceAll('.', '_')
         
-        const data = document.getElementById("results").children[0].children[0].children[1].innerText;
+        const data = calc_results.innerText;
         download(filetype.selectedOptions[0].value, data, `CANT_${sub}`)
     }) 
     
