@@ -48,7 +48,7 @@ function Translate(){
     const a = string.match(regex_split).filter((x) => x != ' ' && x != '\n')
     console.log(a)
     const b = a.map((x) => (operators !== null && operators.indexOf(x) !== -1 ) || !isNaN(x) ?
-     [' ', x, ' '] : Alphas?.['Latin'][law.selectedOptions[0].value][Alphas.Latin.Alpha.indexOf(x)]).filter((x) => x !== undefined).flat(2).filter((x) => x != ' ')
+     [' ', x, ' '] : Alphas?.['Latin'][law.selectedOptions[0].label][Alphas.Latin.Alpha.indexOf(x)]).filter((x) => x !== undefined).flat(2).filter((x) => x != ' ')
     
     const equation = string
     const equation_tr = b.join('')
@@ -178,7 +178,7 @@ const ShowFile =
 function SetUp(){
     filetype.addEventListener('change', (event) => {
         const data = Translate()
-        ShowFile[filetype.selectedOptions[0].label](data, subject.innerText.toString(), law.selectedOptions[0].value)
+        ShowFile[filetype.selectedOptions[0].label](data, subject.innerText.toString(), law.selectedOptions[0].label)
     })
     
     download.addEventListener('click', (event) => {
@@ -192,7 +192,7 @@ function SetUp(){
         if(event.key === 'Enter'){
             event.preventDefault() 
             const data = Translate()
-            ShowFile[filetype.selectedOptions[0].label](data, subject.innerText.toString(), law.selectedOptions[0].value)
+            ShowFile[filetype.selectedOptions[0].label](data, subject.innerText.toString(), law.selectedOptions[0].label)
             
         }
     })
