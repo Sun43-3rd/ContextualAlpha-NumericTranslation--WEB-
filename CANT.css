@@ -49,7 +49,7 @@ body{
 
 .horizontal {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	column-gap: 5px ;
 }
 
