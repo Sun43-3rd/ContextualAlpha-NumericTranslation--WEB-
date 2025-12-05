@@ -32,7 +32,7 @@ const Alphas = {
 const subject = document.getElementById('calc_subject')
 const law = document.getElementById("calc_law")
 const filetype = document.getElementById('calc_filetype')
-const download = document.getElementById('calc_download')
+const calc_download = document.getElementById('calc_download')
 const calc_results = document.getElementById('calc_results')
 const regex_operators = /[\/\(\)\^+\*\-]/g;
 const regex_other = /(?<![.!?;]) /g
@@ -181,7 +181,7 @@ function SetUp(){
         ShowFile[filetype.selectedOptions[0].label](data, subject.innerText.toString(), law.selectedOptions[0].label)
     })
     
-    download.addEventListener('click', (event) => {
+    calc_download.addEventListener('click', (event) => {
         const sub = subject.innerText.toString().replace(/\s*([+\-*/])\s*/g, '_').replaceAll(regex_other, '_').replaceAll(regex_puncutuation, '_').replaceAll('.', '_')
         
         const data = calc_results.innerText;
