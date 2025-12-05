@@ -41,7 +41,7 @@ body{
 	height: 100%;
 }
 
-.vertcal {
+.vertical {
 	display: flex;
 	flex-direction: column;
 	row-gap: 10px;
