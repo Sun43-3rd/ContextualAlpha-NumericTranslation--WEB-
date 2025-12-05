@@ -10,7 +10,7 @@
 		<link rel="stylesheet" href="CANT.css">
 	</head>
 	<body>
-
+	
 		<div class="vertical">
 			<div class="horizontal">
 				<span class="text-heading-2">Law</span>
@@ -26,20 +26,17 @@
 				<span id="calc_subject" class="input text-subtitle" contenteditable="true">A</span>
 			</div>
 			<button id="calc_download">Download</button>
-		<div>
-			<table id="results">
-				<tr>
-					<td>
-						<select id="results_format">
-								<option value="text">Text</option>
-								<option value="json">JSON</option>
-								<option value="csv">CSV</option>
-						</select>
-					</td>
-					<td class="text-subtitle"></td>
-				</tr>
-			</table>
 		</div>
+		<div class="horizontal">
+			<select id="calc_filetype" style="border: none">
+				<option value="text">Text</option>
+				<option value="json">JSON</option>
+				<option value="csv">CSV</option>
+			</select>
+					
+			<div id="calc_results" class="text-subtitle" style="border: 2px solid white"></div>
+		</div>
+		
 		<script type="module" src="Test.js"></script>
 	</body>
 </html>
