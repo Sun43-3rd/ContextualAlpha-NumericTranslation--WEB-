@@ -7,6 +7,9 @@ body{
 	background-color: #000000;
 	padding-top: 10px 10px 10px 10px;
 	height: 100%;
+	display: flex;
+	flex-direction: column;
+	row-gap: 10%;
 }
 
 .text-heading-1, .text-heading-2, .text-subtitle, .text-sub-subtitle, .subtitle-box, span{
@@ -42,8 +45,6 @@ body{
 	display: flex;
 	flex-direction: column;
 	row-gap: 10px;
-	
-	
 }
 
 .horizontal {
@@ -52,34 +53,8 @@ body{
 	column-gap: 5px ;
 }
 
-span{
+span, button{
 	padding: 2px 2px 2px 2px;
-}
-
-#result_direct{
-	display: flex;
-	column-gap: 5px;
-	width: 500px;
-	height: 100px;
-}
-
-#result_direct tr :nth-child(1){
-	width: 225px;
-}
-#result_direct tr :nth-child(2){
-	width: 150px;
-}
-
-td{
-	
-	border: 2px solid rgb(255, 255, 255);
-	min-width: 100px;
-	min-height: 25px;
-	height: 100%;
-}
-
-#result_direct tr :nth-child(1), #parameters tr :nth-child(1){
-	padding-left: 2px;
 }
 
 .input{
@@ -96,19 +71,6 @@ td{
 	overflow: hidden;
 }
 
-#results{
-	padding-top: 25px;
-}
 
-#results tr{
-	display: flex;
-	width: 700px;
-
-}
-
-#results td{
-	display: block;
-	width: max-content;
-}
 
 
