@@ -73,9 +73,9 @@ function download(type, content, filename = 'data') {
     // Convert the string to a Blob (MIME type for JSON)
     const blob = new Blob([content], {
         'json': { type: 'application/json' },
-        'txt' : { type: 'text/plain'},
+        'text' : { type: 'text/plain'},
         'csv' : { type: 'text/csv'}
-    }.[type] 
+    }[type] 
     );
 
     // Create a temporary link element
