@@ -10,31 +10,30 @@
 		<link rel="stylesheet" href="CANT.css">
 	</head>
 	<body>
-		<div class="calc-section-top">
-			<table id="parameters">
-				<tbody>
-					<tr>
-						<td><span class="text-heading-2">Law</span></td>
-						<td class="text-heading-2">
-							<select id="calc_law">
-								<option>Reduced</option>
-								<option>Ordinal</option>
-								<option>K&V</option>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td><span class="text-heading-2">Subject</span></td>
-						<td id="calc_subject" class="input text-subtitle" contenteditable="true">A</td>
-					</tr>
-				</tbody>
-			</table>
+
+		<div class="vertical">
+			<div class="horizontal">
+				<span class="text-heading-2">Law</span>
+							
+				<select id="calc_law">
+					<option>Reduced</option>
+					<option>Ordinal</option>
+					<option>K&V</option>
+				</select>
+			</div>	
+			<div>
+				<span class="text-heading-2">Subject</span>
+				<span id="calc_subject" class="input text-subtitle" contenteditable="true">A</span>
+			</div>
+			<button id="calc_download">Download</button>
+		<div>
 			<table id="results">
 				<tr>
 					<td>
 						<select id="results_format">
-								<option>JSON</option>
-								<option>CSV</option>
+								<option value="text">Text</option>
+								<option value="json">JSON</option>
+								<option value="csv">CSV</option>
 						</select>
 					</td>
 					<td class="text-subtitle"></td>
