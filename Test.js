@@ -161,7 +161,7 @@ const ShowFile =
                 
                 calc_results.innerText = text
                 
-            }
+            },
 
             'CSV' : (data, name, law) => {
                 const text =  `
