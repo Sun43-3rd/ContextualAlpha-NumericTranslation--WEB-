@@ -165,7 +165,7 @@ const ShowFile =
 
             'CSV' : (data, name, law) => {
                 const text =  `
-                ${name},${law},Equation,Equation_Translated,Translation,Astrology,Aries,Taurus,Gemini,Cancer,Leo,Virgo,Libra,Scorpio,Sagittarius,Capricorn,Aquarius,Pisces\n-${name},-${law},${data[2]},${data[0]},${data[1]},,No_Reduction,${data[3][0].join(',')}\n-${name},-${law},,,,,Reduced_1,${data[3][2].join(',')}\n-${name},-${law},,,,,Reduced_2,${data[3][3].join(',')}\n-${name},-${law},,,,,Reduced_3,${data[3][4].join(',')}
+                ${name},${law},Equation,Equation_Translated,Translation,Astrology,Aries,Taurus,Gemini,Cancer,Leo,Virgo,Libra,Scorpio,Sagittarius,Capricorn,Aquarius,Pisces\n-${name},-${law},${data[2]},${data[0]},${data[1]},No_Reduction,${data[3][0].join(',')}\n-${name},-${law},,,,Reduced_1,${data[3][2].join(',')}\n-${name},-${law},,,,Reduced_2,${data[3][3].join(',')}\n-${name},-${law},,,,Reduced_3,${data[3][4].join(',')}
                 `
     
             
