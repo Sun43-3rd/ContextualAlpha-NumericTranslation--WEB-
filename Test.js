@@ -26,7 +26,8 @@ const Alphas = {
         'Alpha': ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'], 
         'Ordinal': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26], 
         'Reduced':[1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8], 
-        'KV': [1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 11, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 22, 5, 6, 7, 8]}
+        'KV': [1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 11, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 22, 5, 6, 7, 8]
+        }
     };
 
 const subject = document.getElementById('calc_subject')
@@ -70,7 +71,7 @@ return [equation, equation_tr, translation_str, Astro(translation)]
 }
 
 function download(type, content, filename = 'data') {
-    // Convert the string to a Blob (MIME type for JSON)
+
     const blob = new Blob([content], {
         'json': { type: 'application/json' },
         'txt' : { type: 'text/plain'},
@@ -78,17 +79,16 @@ function download(type, content, filename = 'data') {
     }[type] 
     );
 
-    // Create a temporary link element
     const url = URL.createObjectURL(blob);
     const a   = document.createElement('a');
     a.href   = url;
-    a.download = `${filename}.${type}`;          // Suggested file name
-    document.body.appendChild(a);   // Required for Firefox
+    a.download = `${filename}.${type}`;          
+    document.body.appendChild(a);   
 
-    a.click();                      // Programmatically click to start download
-    document.body.removeChild(a);   // Clean up
+    a.click();                     
+    document.body.removeChild(a);   
 
-    // Release the object URL after a short delay
+  
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
 
@@ -134,8 +134,8 @@ const ShowFile =
     
             'Text' : (data, name, law) => {
                 const text =  `
-                        Subject = ${name},
-                        Law = ${law},
+                        Subject = ${name}, Law = ${law},
+
                         Equation = ${data[0]}
                         Equation_Translated = ${data[1]} 
                         Translation = ${data[2]}
@@ -154,8 +154,7 @@ const ShowFile =
                             Aquarius = ${data[3][0][10]} / ${data[3][2][10]} / ${data[3][3][10]} / ${data[3][4][10]}
                             Pisces = ${data[3][0][11]} / ${data[3][2][11]} / ${data[3][3][11]} / ${data[3][4][11]}
     
-                        }
-                    }`
+                        `
     
                 
                 
