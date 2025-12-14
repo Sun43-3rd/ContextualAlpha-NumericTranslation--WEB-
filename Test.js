@@ -9,7 +9,7 @@ function Astro(subject){
 
     for(let i = 1; i <= 12; i++){
         
-        bounds.push(Intl.NumberFormat('en-US', {minimumFractionDigits: 2}).format((subject * i / 12)))
+        bounds.push((subject * i / 12).toFixed(5))
     
     }
 
@@ -184,7 +184,8 @@ function SetUp(){
         const sub = subject.innerText.toString().replace(/\s*([+\-*/])\s*/g, '_').replaceAll(regex_other, '_').replaceAll(regex_puncutuation, '_').replaceAll('.', '_')
         
         const data = calc_results.innerText;
-        download(filetype.selectedOptions[0].value, data, `CANT_${sub}`)
+        download(filetype.selectedOptions[0].value, data, `CANT(${law.selectedOptions[0].label})-${sub}`)
+        subject.focus()
     }) 
     
     subject.addEventListener('keydown', (event) => {
@@ -192,7 +193,7 @@ function SetUp(){
             event.preventDefault() 
             const data = Translate()
             ShowFile[filetype.selectedOptions[0].label](data, subject.innerText.toString(), law.selectedOptions[0].label)
-            
+            calc_download.focus()
         }
     })
 }
