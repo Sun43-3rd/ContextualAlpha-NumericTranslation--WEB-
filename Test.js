@@ -3,6 +3,9 @@ function Reduced(x){
     return Math.floor(x).toString().split('').map((x) => Number(x)).reduce((a, b) => a + b)
 }
 
+function GetCells(ids){
+    return ids.map((x) => document.getElementById(x))
+}
 
 function Astro(subject){
     const bounds = [];
@@ -30,7 +33,7 @@ const Alphas = {
         }
     };
 
-const subject = document.getElementById('calc_subject')
+const search = document.getElementById('Interactive-Search')
 const law = document.getElementById("calc_law")
 const filetype = document.getElementById('calc_filetype')
 const calc_download = document.getElementById('calc_download')
@@ -44,7 +47,7 @@ const regex_split = /\d+|[^\d\s]/g
 const direct = document.getElementById('')
 
 function Translate(){
-    const string = subject.innerText.toUpperCase().replace(/\s*([+\-*/])\s*/g, '$1').replace(regex_other, ' + ').replace(regex_puncutuation, ' + ')
+    const string = search.innerText.toUpperCase().replace(/\s*([+\-*/])\s*/g, '$1').replace(regex_other, ' + ').replace(regex_puncutuation, ' + ')
     const operators = string.match(regex_operators)
     const a = string.match(regex_split).filter((x) => x != ' ' && x != '\n')
     console.log(a)
@@ -91,6 +94,49 @@ function download(type, content, filename = 'data') {
   
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
+
+const Results = {
+    'entry_points': {
+        'SearchLength' : document.getElementById('Results-SearchLength') ,
+        'ZodiacalLowerBoundaries': GetCells(['C8', 'D8', 'E8', 'F8', 'G8', 'H8', 'I8', 'J8', 'K8', 'L8', 'M8', 'N8']),
+        'ZodiacalUpperBoundaries': GetCells(['C8', 'D8', 'E8', 'F8', 'G8', 'H8', 'I8', 'J8', 'K8', 'L8', 'M8', 'N8']),
+        'Translation': document.getElementById('Results-Translation'),
+        'TranslationSimplified': document.getElementById('Results-TranslationSimplified'),
+        'ZodiacalTranslation': document.getElementById('Results-ZodiacalTranslation'),
+        'ZodiacalTranslationEXT': document.getElementById('Results-ZodiacalTranslationEXT'),
+    }
+    
+    'update' : (data) => {
+        const data = Translate()
+        Results['SearchLength'] = search.innerText.length;
+        Results['ZodiacalLowerBoundaries'] = [0, ...data[3][0]].slice(0, this.length - 1);
+        Results['ZodiacalUpperBoundaries'] = data[3][0];
+        Results['Translation'] = `${data[1]}`;
+        Results['TranslationSimplified'] = `${data[2]}`;
+        Results['ZodiacalTranslation'] = ; 
+        Results['ZodiacalTranslationEXT'] = 'NAN'; 
+        
+    },
+    
+    'release' : () => {
+        for ( const point in Results['entrypoint'] ){
+
+                if(Array.isArray(point)){
+                    point.map((x, i) => 
+                        Array.prototype.filter.call(x.children, (y) => y.tagName === 'span')[0].innerText = Results[point][i]
+                    )
+                }
+                else{
+                    Array.prototype.filter.call(point.children, (x) => x.tagName === 'span')[0].innerText = Results[point]
+                }
+            
+        }
+            
+    }
+
+    
+}
+
 
 const ShowFile = 
 {
@@ -175,27 +221,68 @@ const ShowFile =
         }
 
 function SetUp(){
+
+    // ELEMENT FEATURES 
+    
+    td.map((x) => {
+        
+    // when click focus on textbox(span), if no textbox add one. 
+        
+        x.addEventListener('click', (event) => {
+            if(!x.classList.contains('non-interactive')){
+                if(!x.hasChildNodes()){
+                    x.classList.add('interactive')
+                    const new_textbox = document.createElement('span');
+                    x.appendChild(new_textbox)
+                    new_textbox.focus = true;
+                } else {}
+                    
+            } else {}
+        }
+        
+    // while the td is being typed in 
+
+        x.addEventListener('keydown', (event) => {
+            if(!isNaN(x.innerText)){
+                x.setAttribute('type', 'number')
+            }
+            if(isNaN(x.innerText)){
+                x.setAttribute('type', 'text')
+            }
+        }
+    }) 
+
+    
     filetype.addEventListener('change', (event) => {
         const data = Translate()
-        ShowFile[filetype.selectedOptions[0].label](data, subject.innerText.toString(), law.selectedOptions[0].label)
+        ShowFile[filetype.selectedOptions[0].label](data, search.innerText.toString(), law.selectedOptions[0].label)
     })
     
     calc_download.addEventListener('click', (event) => {
-        const sub = subject.innerText.toString().replace(/\s*([+\-*/])\s*/g, '_').replaceAll(regex_other, '_').replaceAll(regex_puncutuation, '_').replaceAll('.', '_')
+        const sub = search.innerText.toString().replace(/\s*([+\-*/])\s*/g, '_').replaceAll(regex_other, '_').replaceAll(regex_puncutuation, '_').replaceAll('.', '_')
         
         const data = calc_results.innerText;
         download(filetype.selectedOptions[0].value, data, `CANT(${law.selectedOptions[0].label})-${sub}`)
-        subject.focus()
+        search.focus()
     }) 
     
-    subject.addEventListener('keydown', (event) => {
-        if(event.key === 'Enter'){
+    search.addEventListener('keydown', (event) => {
+        if(event.key === ''){
             event.preventDefault() 
-            const data = Translate()
-            ShowFile[filetype.selectedOptions[0].label](data, subject.innerText.toString(), law.selectedOptions[0].label)
-            calc_download.focus()
+             // Change Results 
+            Results.update()
+            Results.release()
+
+            ShowFile[filetype.selectedOptions[0].label](data, search.innerText.toString(), law.selectedOptions[0].label)
+            
         }
+        
     })
+
+    // Load Document 
+
+    
+    
 }
 
 
