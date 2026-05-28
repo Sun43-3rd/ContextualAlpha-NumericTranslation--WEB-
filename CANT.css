@@ -4,75 +4,103 @@ html, body{
 }
 
 body{
-	background-color: #000000;
+	
 	padding: 10px 10px 10px 10px;
 	height: 100%;
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
+	justify-content: center; 
 	row-gap: 10%;
 }
 
-.text-heading-1, .text-heading-2, .text-subtitle, .text-sub-subtitle, .subtitle-box, span{
-	font-family: 'Courier New', Courier, monospace;
-	color: #ffffff;
+
+table, tbody, tr{
+	width: 100%;
+	
 }
 
-.text-heading-1{
-	font-size: 24pt;
+table{
+	border-collapse: collapse;
+  	border: 2px solid rgb(140 140 140);
+	
+	background: rgba(255, 255, 255, 0.25);
+	backdrop-filter: blur(11px) saturate(165%);
+	-webkit-backdrop-filter: blur(11px) saturate(165%);
+	border: 1px solid rgba(255, 255, 255, 1.00);
+	border-radius: 4px;
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
 }
 
-.text-heading-2{
-	font-size: 18pt;
-}
-
-.text-subtitle{
-	font-size: 14pt;
-}
-
-.text-sub-subtitle{
-	font-size: 12pt;
-}
-
-.calc-section-top{
-	display: flex;
-	flex-direction: column;
-	row-gap: 10px;
-	width: 80%;
-	height: 100%;
-}
-
-.vertical {
-	display: flex;
-	flex-direction: column;
-	row-gap: 10px;
-}
-
-.horizontal {
+td{
+	border: 1px solid rgb(160 160 160);
+  	padding: 8px 10px;
+	height: 35px;
+	
 	display: flex;
 	flex-direction: row;
-	column-gap: 5px ;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
 }
+
+
+
 button{
 	width: fit-content; 
 	height: 25px;
 }
+
 span, button{
 	padding: 2px 2px 2px 2px;
 }
 
-.input{
-	position: relative;
-	min-width: 150px;
-	max-width: 235px;
-	border-radius: 1px;
-	height: 30px;
-	width: 25px;
+td:first-of-type, td:nth-of-type(1), td:last-of-type{
+	width: 2%;
+}
+
+span, span[type='text']{
+	font-family: "Roboto", sans-serif;  
+	font-optical-sizing: auto;
+	color: #ffffff;
+}
+
+span[type="number"]{
+	font-family: 'Roboto Mono', Roboto, monospace;
+}
+
+span.text-label{
+	font-weight: 'bold';
+}
+
+span, .text-default{
+	font-size: 14px;
+}
+
+
+
+
+
+
+
+td, .interactive > span {
+	contenteditable: true ;
+}
+
+td.non-interactive {
+	contenteditable: false;
+}
+
+.interactive > span {
+	min-width: 100%;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
 	overflow: hidden;
+	
 }
+
+
 
 
 
